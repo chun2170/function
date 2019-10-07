@@ -1,0 +1,21 @@
+function week_of_month($date){
+	$startdate = date('Y-m-01', strtotime($date));
+	$enddate = date('Y-m-t', strtotime($startdate));
+
+	$date = $startdate;
+	do{
+		$form  = date('Y-m-d', strtotime("last monday", strtotime($date)));
+		if($form < $startdate){
+			$form = $startdate;
+		}
+		$to = date('Y-m-d', strtotime("this sunday", strtotime($form)));
+		if($to > $enddate){
+			$to = $enddate;
+		}
+		$week[] = array($form, $to);
+
+		$date = date('Y-m-d', strtotime("+1 week", strtotime($to)));
+	}while($to < $enddate);
+
+	return $week;
+}
