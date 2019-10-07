@@ -1,3 +1,4 @@
+<?php
 function week_of_month($date){
 	$startdate = date('Y-m-01', strtotime($date));
 	$enddate = date('Y-m-t', strtotime($startdate));
